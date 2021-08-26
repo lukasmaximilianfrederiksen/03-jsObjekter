@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      section {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+      article {
+        border: solid black 1px;
+        padding: 2rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="dyrContainer">
+      <template>
+        <article class="dyreListe">
+          <h3></h3>
+          <img src="" alt="" class="billedeDyr" />
+          <p class="typeDyr"></p>
+          <p class="levestedDyr"></p>
+        </article>
+      </template>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", start);
+
+      function start() {
+        let dyr = [
+          {
+            navn: "gris",
+            type: "pattedyr",
+            billede: "http://mabe-kea.dk/E19/pics/pig.png",
+            levested: "svinefarme",
+          },
+          {
+            navn: "frø",
+            type: "amfibie",
+            billede: "http://mabe-kea.dk/E19/pics/frog.png",
+            levested: "søer",
+          },
+          {
+            navn: "ræv",
+            type: "pattedyr",
+            billede: "http://mabe-kea.dk/E19/pics/fox.png",
+            levested: "alle steder?",
+          },
+          {
+            navn: "sild",
+            type: "fisk",
+            billede: "http://mabe-kea.dk/E19/pics/sild.jpg",
+            levested: "hav",
+          },
+          {
+            navn: "krokodille",
+            type: "Reptil",
+            billede: "http://mabe-kea.dk/E19/pics/kroko.jpg",
+            levested: "søer & floder",
+          },
+        ];
+
+        const container = document.querySelector(".dyrContainer");
+        const liste = document.querySelector("template");
+        let article = document.querySelector("article");
+        dyr.forEach((dyr) => {
+          let klon = liste.cloneNode(true).content;
+          klon.querySelector("h3").textContent = dyr.navn;
+          klon.querySelector("img").src = dyr.billede;
+          klon.querySelector(".typeDyr").textContent = dyr.type;
+          klon.querySelector(".levestedDyr").textContent = dyr.levested;
+          container.appendChild(klon);
+        });
+      }
+    </script>
+  </body>
+</html>
