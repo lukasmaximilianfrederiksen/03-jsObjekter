@@ -16,6 +16,7 @@
       }
       article {
         border: solid black 1px;
+        margin-left: 2rem;
       }
     </style>
   </head>
@@ -27,6 +28,9 @@
           <img src="" alt="" class="billedePerson" />
           <p class="personNavn"></p>
           <p class="personEfternavn"></p>
+          <p class="fødselsdag"></p>
+          <p class="titel"></p>
+          <p class="religion"></p>
           <p class="hobby"></p>
         </article>
       </template>
@@ -57,8 +61,12 @@
         json.forEach((person) => {
           const klon = template.cloneNode(true).content;
           klon.querySelector("img").src = "./billeder-json/" + person.billede;
-          klon.querySelector("h2").textContent = person.fornavn;
-          klon.querySelector(".personEfternavn").textContent = person.efternavn;
+          klon.querySelector("h2").textContent =
+            person.fornavn + " " + person.efternavn;
+          // klon.querySelector(".personEfternavn").textContent = person.efternavn;
+          klon.querySelector(".fødselsdag").textContent = person.fødselsdag;
+          klon.querySelector(".religion").textContent = person.troende;
+          klon.querySelector(".titel").textContent = person.titel;
           klon.querySelector(".hobby").textContent = person.hobby;
           const main = document.querySelector(".personContainer");
           main.appendChild(klon);
